@@ -17,16 +17,10 @@ def op(f,k,vol,t,r = 6.25/100, op_type ='c'):
     else:
         return bs.black_put(f,k,t,r,vol)
     
-def get_expiry_date(y=2017,m=01):
-    # yet to finish
-    return 0    
 
-def get_ttm(expiry_str = "20170628"):
+def get_ttm(expiry = dt.date(2017,1,1)):
     curr_date = dt.date.today()
-    #curr_date = curr_date.date()
-    d2 = dt.datetime.strptime(expiry_str, "%Y%m%d")
-    d2 = d2.date()
-    td = d2 - curr_date
+    td = expiry - curr_date
     ttm = float(td.days)/365
     return ttm
     # need to account for holidays , intra day time calculations
